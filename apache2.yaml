@@ -1,0 +1,12 @@
+---
+- name: Check Apache server installed
+  hosts: ubuntuServer
+  tasks:
+  - name: Make sure Apache LATEST version installed
+    apt:
+      name: apache2
+      state: present
+  - name: Make sure Apache is Running
+    service:
+      name: apache2
+      state: started 
