@@ -1,0 +1,13 @@
+#1.	Launch a new terminal and create a new directory called trivy and change our current directory to trivy using the following commands
+
+mkdir trivy
+cd trivy
+
+#2.	Trivy can be used in multiple ways and we are going to use the docker version of it using the following command: We are going to use the image tagged as getcapsule8/shellshock:test on docker hub as our target.
+
+wget https://github.com/aquasecurity/trivy/releases/download/v0.30.4/trivy_0.30.4_Linux-64bit.deb
+sudo dpkg -i trivy_0.30.4_Linux-64bit.deb
+trivy image getcapsule8/shellshock:test 
+
+
+
