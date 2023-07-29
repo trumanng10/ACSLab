@@ -14,3 +14,27 @@ audit_control \
 --label docker_bench_security \
 docker/docker-bench-security
 
+
+#5.	From the preceding output, we can see that these 4 containers are running. Let us stop and remove all these four containers using the following command:
+
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+
+
+#6.	Address the issue flagged by Docker bench security by adding a new user to the container instead of just starting it with the default options. So, let us use the following command to start the container.
+
+docker run -itd --user 1001:1001 alpine
+
+
+#11.	Run Docker Bench Security commands:
+
+docker run -it --net host --pid host --userns host --cap-add
+audit_control \
+-e DOCKER_CONTENT_TRUST=$DOCKER_CONTENT_TRUST \
+-v /etc:/etc \
+-v /var/lib:/var/lib:ro \
+-v /var/run/docker.sock:/var/run/docker.sock:ro \
+--label docker_bench_security \
+docker/docker-bench-security
+
+
