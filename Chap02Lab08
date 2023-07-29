@@ -1,0 +1,29 @@
+#3.	From the preceding excerpt, we can see that Apparmor exists in the security profiles. Let us now create a new file called apparmor-profile using a text editor and add the following lines of code inside it.
+
+~$ mkdir apparmor
+~$ cd apparmor
+~$ vi apparmor-profile
+
+
+# 4.	Add the following lines:
+
+#include <tunables/global>
+profile apparmor-profile flags=(attach_disconnected,mediate_deleted) {
+  #include <abstractions/base>
+  file,
+  network,
+  capability,
+  deny /tmp/** w,
+  deny /etc/passwd rwklx,
+}
+
+
+#6.	The AppArmor profile that we are trying to use with the container is not loaded yet. To load it, let us use the following command：
+
+sudo apparmor_parser -r -W apparmor-profile
+
+
+#7.	Start the container again with 
+
+docker exec <Container-ID> sh
+
