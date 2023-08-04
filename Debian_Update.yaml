@@ -1,7 +1,10 @@
-- name: DEBIAN | Install updates
-apt:
- update_cache: yes
- cache_valid_time: 7200
- name: "*"
- state: latest
- when: "ansible_os_family == 'Debian'"
+- name: Install Sec Patches on Debian Server
+  hosts: ubuntuServer
+  tasks:
+  - name: DEBIAN | Install updates
+    apt:
+     update_cache: yes
+     cache_valid_time: 7200
+     name: "*"
+     state: latest
+    when: "ansible_os_family == 'Debian'"
