@@ -5,7 +5,7 @@ docker run -itd alpine
 
 #2.	Now let us run Docker bench security using it’s docker image and see if it flags any issues on this container so that we can fix them:
 
-docker run -it --net host --pid host --userns host --cap-add
+docker run -it --net host --pid host --userns host --cap-add \
 audit_control \
 -e DOCKER_CONTENT_TRUST=$DOCKER_CONTENT_TRUST \
 -v /etc:/etc \
