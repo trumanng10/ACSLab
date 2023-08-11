@@ -1,0 +1,13 @@
+spec:
+  containers:
+  - args:
+    - --namespace=kubernets-dashboard
+    - --insecure-port=9090
+    image: kubernetesui/dashboard:v2.6.1
+    imagePullPolicy: Always
+    livenessProbe:
+       failureThreshold: 3
+       httpGet:
+         path: /
+         port: 9090
+         scheme: HTTP
