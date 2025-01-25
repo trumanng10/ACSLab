@@ -1,3 +1,38 @@
+To check if AppArmor is enabled and exists in the security profiles on your system, follow these steps:
+
+Check if AppArmor is installed:
+Run the following command to check if AppArmor is installed:
+
+dpkg -l | grep apparmor
+If AppArmor is installed, you should see a package like apparmor listed.
+
+Check if AppArmor is running:
+To verify if the AppArmor service is running, use:
+
+sudo systemctl status apparmor
+If it’s running, you will see output showing that the apparmor service is active.
+
+Check AppArmor security profiles:
+To view the security profiles that AppArmor is using, you can check the /etc/apparmor.d/ directory:
+
+ls /etc/apparmor.d/
+This directory contains all the AppArmor security profiles on your system.
+
+Check the status of AppArmor profiles:
+Use the aa-status command to check the status of all AppArmor profiles:
+
+sudo aa-status
+This will list the loaded profiles and their statuses (whether they are enforced, complain, or unconfined).
+
+Check AppArmor support in Docker:
+To verify if AppArmor is being used by Docker containers, you can check the Docker daemon’s logs or use the following command to list all containers with their security options:
+
+docker inspect --format '{{.HostConfig.SecurityOpt}}' <container_name_or_id>
+These steps will help you confirm if AppArmor exists and is actively being used in the security profiles of your system.
+
+
+
+
 #3.	From the preceding excerpt, we can see that Apparmor exists in the security profiles. Let us now create a new file called apparmor-profile using a text editor and add the following lines of code inside it.
 
 mkdir apparmor
