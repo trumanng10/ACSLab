@@ -1,0 +1,3 @@
+# ruleId   threshold   action
+10010      INFO        IGNORE
+10020      LOW         WARN
